@@ -23,3 +23,8 @@ setopt HIST_IGNORE_DUPS
 setopt EXTENDED_HISTORY
 
 source $ZSH/oh-my-zsh.sh
+
+# Go
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=/workspace/go
+export PATH=$PATH:$GOPATH/bin
