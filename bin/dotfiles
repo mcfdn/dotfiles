@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+export DOTFILES=~/.dotfiles
+shopt -s dotglob
+
+REPO_URL=https://github.com/jamesmcfadden/dotfiles
+
+if [[ ! -d $DOTFILES ]]
+then
+  echo "[INSTALL] $REPO_URL"
+  git clone $REPO_URL $DOTFILES
+else
+  echo "[UPDATE] $DOTFILES"
+  cd $DOTFILES
+  git pull
+fi
+
+for f in $DOTFILES/link/*
+do
+  dest=~/${f##*/}
+  echo "[LINK] $f --> $dest"
+  ln -sf $f $dest
+done
+
+for f in $DOTFILES/copy/*
+do
+  dest=~/${f##*/}
+  echo "[COPY] $f --> $dest"
+  cp $f $dest
+done
+
+echo "Finished"
