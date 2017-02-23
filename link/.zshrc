@@ -6,7 +6,7 @@ export EDITOR="vim"
 export SAVEHIST=10000
 export HISTSIZE=10000
 export GOPATH=/workspace/go
-export PATH=$DOTFILES/bin/::/usr/local/mysql/bin/:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:$PATH
+export PATH=$DOTFILES/bin/:/usr/local/bin:/usr/local/mysql/bin/:/usr/local/go/bin:$GOPATH/bin:~/.composer/vendor/bin:$PATH
 
 plugins=(git)
 
