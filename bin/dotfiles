@@ -3,54 +3,96 @@
 export DOTFILES=~/.dotfiles
 shopt -s dotglob
 
-REPO_URL=https://github.com/jamesmcfadden/dotfiles
+REPO_URL=git@github.com:/jamesmcfadden/dotfiles
 FORCE=false
 
-while getopts ":f" opt; do
-  case $opt in
-    f)
-      echo "Forcing..."
-      FORCE=true
-      ;;
-    \?)
-      echo "Invalid option: -$OPTARG" >&2
-      exit 1
-      ;;
-  esac
-done
+function install {
+  if [[ ! -d $DOTFILES ]]
+  then
+    echo "[INSTALL] $REPO_URL"
+    git clone $REPO_URL $DOTFILES
+  else
+    echo "! .dotfiles is already installed at $DOTFILES"
+    if [[ $FORCE == false ]]
+    then
+      exit 0
+    fi
+  fi
 
-if [[ ! -d $DOTFILES ]]
-then
-  echo "[INSTALL] $REPO_URL"
-  git clone $REPO_URL $DOTFILES
-else
-  echo "[UPDATE] $DOTFILES"
+  for f in $DOTFILES/link/*
+  do
+    dest=~/${f##*/}
+    if [[ -e $dest && $FORCE == false ]]
+    then
+      echo "! $dest already exists, not symlinking"
+    else
+      echo "[LINK] $f --> $dest"
+      ln -sf $f $dest
+    fi
+  done
+
+  for f in $DOTFILES/copy/*
+  do
+    dest=~/${f##*/}
+    if [[ -e $dest && $FORCE == false ]]
+    then
+      echo "! $dest already exists, not copying"
+    else
+      echo "[COPY] $f --> $dest"
+      cp $f $dest
+    fi
+  done
+
+  echo "Successfully installed .dotfiles at $DOTFILES"
+}
+
+function push {
+  echo "[PUSH] $DOTFILES"
+  cd $DOTFILES
+  git add -A
+  git commit
+  echo 'git push...'
+  git push
+}
+
+function pull {
+  echo "[PULL] $DOTFILES"
   cd $DOTFILES
   git pull
+}
+
+# Force option
+if [[ $2 == '-f' ]]
+then
+  FORCE=true
 fi
 
-for f in $DOTFILES/link/*
-do
-  dest=~/${f##*/}
-  if [[ -e $dest && $FORCE = false ]]
-  then
-    echo "! $dest already exists, not symlinking"
-  else
-    echo "[LINK] $f --> $dest"
-    ln -sf $f $dest
-  fi
-done
+case $1 in
+  install)
+    install
+    ;;
+  pull)
+    pull
+    ;;
+  push)
+    push
+    ;;
+    "")
+cat << EOF
+usage: dotfiles [command]
 
-for f in $DOTFILES/copy/*
-do
-  dest=~/${f##*/}
-  if [[ -e $dest && $FORCE = false ]]
-  then
-    echo "! $dest already exists, not copying"
-  else
-    echo "[COPY] $f --> $dest"
-    cp $f $dest
-  fi
-done
+Available commands:
+install    Install dotfiles
+push       Push changes to the dotfiles repository
+pull       Pull changes from the dotfiles repository
 
-echo "Finished"
+Docs: https://github.com/jamesmcfadden/dotfiles
+EOF
+    ;;
+  *)
+    echo "Invalid command $1"
+    exit 1
+esac
+
+exit 0
+
