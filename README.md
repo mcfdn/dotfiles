@@ -59,3 +59,5 @@ dotfiles pull
 ## Todo
 
 - Homebrew support
+- Add confirmation between commit and push
+- Add status command
