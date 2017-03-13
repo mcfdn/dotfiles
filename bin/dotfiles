@@ -7,16 +7,10 @@ REPO_URL=git@github.com:/jamesmcfadden/dotfiles
 FORCE=false
 
 function install {
+  echo "[INSTALL] $REPO_URL"
   if [[ ! -d $DOTFILES ]]
   then
-    echo "[INSTALL] $REPO_URL"
     git clone $REPO_URL $DOTFILES
-  else
-    echo "! .dotfiles is already installed at $DOTFILES"
-    if [[ $FORCE == false ]]
-    then
-      exit 0
-    fi
   fi
 
   for f in $DOTFILES/link/*
@@ -42,8 +36,6 @@ function install {
       cp $f $dest
     fi
   done
-
-  echo "Successfully installed .dotfiles at $DOTFILES"
 }
 
 function push {
@@ -59,6 +51,13 @@ function pull {
   echo "[PULL] $DOTFILES"
   cd $DOTFILES
   git pull
+  install
+}
+
+function status {
+  echo "[STATUS] $DOTFILES"
+  cd $DOTFILES
+  git status
 }
 
 # Force option
@@ -77,6 +76,9 @@ case $1 in
   push)
     push
     ;;
+  status)
+    status
+    ;;
     "")
 cat << EOF
 usage: dotfiles [command]
@@ -85,6 +87,7 @@ Available commands:
 install    Install dotfiles
 push       Push changes to the dotfiles repository
 pull       Pull changes from the dotfiles repository
+status     Display modified dotfiles
 
 Docs: https://github.com/jamesmcfadden/dotfiles
 EOF

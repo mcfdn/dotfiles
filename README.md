@@ -42,7 +42,7 @@ To force overwriting existing destination files, use the `-f` flag:
 
 ### Push
 
-Push changes:
+Push new and modified dotfiles:
 
 ```
 dotfiles push
@@ -50,14 +50,27 @@ dotfiles push
 
 ### Pull
 
-Pull changes:
+Pull and install dotfiles:
 
 ```
 dotfiles pull
+```
+
+To force the install while pulling:
+
+```
+dotfiles pull -f
+```
+
+### Status
+
+Display modified dotfiles:
+
+```
+dotfiles status
 ```
 
 ## Todo
 
 - Homebrew support
 - Add confirmation between commit and push
-- Add status command
