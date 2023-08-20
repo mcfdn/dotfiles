@@ -37,6 +37,7 @@ zmodload -i zsh/complist
 zstyle ':completion:*' menu select
 
 # Aliases
+alias vim="nvim"
 alias arkenfox="bash /home/james/.mozilla/firefox/e92kyuj3.default-release"
 
 ## Aliases - Git
