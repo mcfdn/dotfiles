@@ -1,7 +1,0 @@
-[user]
-    name = James McFadden
-    email = james@jamesmcfadden.co.uk
-[core]
-    excludesfile = ~/.gitignore_global
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
