@@ -189,8 +189,13 @@ vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#5c6370'})
 
 -- [[ Basic Keymaps ]]
 
+-- Keep cursor vertically centered when scrolling half up/down
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
+-- Keep cursor vertically centered when cycling search matches
+vim.keymap.set('n', 'n', 'nzz')
+vim.keymap.set('n', 'N', 'Nzz')
 
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
