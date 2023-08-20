@@ -189,6 +189,9 @@ vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#5c6370'})
 
 -- [[ Basic Keymaps ]]
 
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+
 -- Keymaps for better default experience
 -- See `:help vim.keymap.set()`
 vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
