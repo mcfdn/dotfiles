@@ -35,6 +35,8 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -U compinit && compinit
 zmodload -i zsh/complist
 zstyle ':completion:*' menu select
+# Shift+Tab reverses selection
+bindkey '^[[Z' reverse-menu-complete
 
 # Aliases
 alias vim="nvim"
