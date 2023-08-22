@@ -132,6 +132,15 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+  {
+    'ray-x/go.nvim',
+    config = function()
+      require("go").setup()
+    end,
+    event = {'CmdlineEnter'},
+    ft = {'go', 'gomod'},
+    build = ':lua require("go.install").update_all_sync()'
+  }
 }, {})
 
 -- [[ Setting options ]]
@@ -453,6 +462,19 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
+
+-- Format for ray-x/go.nvim
+local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*.go',
+  callback = function()
+   require('go.format').goimport()
+  end,
+  group = format_sync_grp,
+})
+
+-- Enable ray-x/go.nvim
+require('go').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
