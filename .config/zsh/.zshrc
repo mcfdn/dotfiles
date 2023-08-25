@@ -50,6 +50,7 @@ alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit"
 alias gp="git push"
+alias gco="git checkout"
 alias gl="git log"
 alias grsh="git reset --soft HEAD~"
 
