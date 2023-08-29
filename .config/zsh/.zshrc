@@ -21,6 +21,7 @@ source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
 # https://github.com/zsh-users/zsh-autosuggestions/tree/master#suggestion-highlight-style
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262"
 
