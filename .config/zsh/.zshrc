@@ -5,8 +5,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-bindkey -e
-
 # Much history
 HISTSIZE=10000
 SAVEHIST=10000
@@ -27,6 +25,11 @@ source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262"
 
 # Keybinds
+bindkey -e
+
+bindkey '^[[1;5C' forward-word
+bindkey '^[[1;5D' backward-word
+
 ## Keybinds - zsh-history-substring-search
 bindkey '^[OA' history-substring-search-up
 bindkey '^[OB' history-substring-search-down
