@@ -151,6 +151,16 @@ require('lazy').setup({
     },
   },
 
+  {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      keywords = {
+        TODO = { color = "#FBBF24" },
+      },
+    },
+  },
+
 }, {})
 
 -- [[ Setting options ]]
