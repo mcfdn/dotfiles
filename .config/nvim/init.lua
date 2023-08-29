@@ -171,7 +171,7 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
--- Enable mouse mode
+-- Disable mouse mode
 vim.o.mouse = ''
 
 -- Sync clipboard between OS and Neovim.
