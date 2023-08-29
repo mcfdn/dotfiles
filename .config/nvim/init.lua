@@ -132,6 +132,7 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
+
   {
     'ray-x/go.nvim',
     config = function()
@@ -139,8 +140,17 @@ require('lazy').setup({
     end,
     event = {'CmdlineEnter'},
     ft = {'go', 'gomod'},
-    build = ':lua require("go.install").update_all_sync()'
-  }
+    build = ':lua require("go.install").update_all_sync()',
+  },
+
+  {
+    'akinsho/toggleterm.nvim',
+    version = "*",
+    opts = {
+      open_mapping = [[<C-t>]],
+    }
+  },
+
 }, {})
 
 -- [[ Setting options ]]
