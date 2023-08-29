@@ -148,7 +148,7 @@ require('lazy').setup({
     version = "*",
     opts = {
       open_mapping = [[<C-t>]],
-    }
+    },
   },
 
 }, {})
