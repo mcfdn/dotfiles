@@ -5,6 +5,15 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# Exports
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+
 # Much history
 HISTSIZE=10000
 SAVEHIST=10000
