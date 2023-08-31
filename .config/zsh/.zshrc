@@ -60,6 +60,7 @@ alias gco="git checkout"
 alias gl="git log"
 alias grsh="git reset --soft HEAD~"
 
+alias z="zellij"
+
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
