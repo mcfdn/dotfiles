@@ -1,0 +1,3 @@
+theme "one-half-dark"
+default_layout "compact"
+default_mode "locked"
