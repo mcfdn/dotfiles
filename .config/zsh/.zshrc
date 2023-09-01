@@ -55,6 +55,7 @@ bindkey '^[[Z' reverse-menu-complete
 
 # Aliases
 alias vim="nvim"
+alias history="history 0"
 alias arkenfox="bash /home/james/.mozilla/firefox/e92kyuj3.default-release"
 
 ## Aliases - Git
