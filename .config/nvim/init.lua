@@ -152,14 +152,6 @@ require('lazy').setup({
   },
 
   {
-    'akinsho/toggleterm.nvim',
-    version = "*",
-    opts = {
-      open_mapping = [[<C-t>]],
-    },
-  },
-
-  {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
@@ -207,7 +199,6 @@ vim.o.timeoutlen = 300
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
--- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- Set relative line numbers
@@ -218,6 +209,9 @@ vim.o.scrolloff = 10
 
 -- Fat cursor
 vim.o.guicursor = ''
+
+vim.o.splitbelow = true
+vim.o.splitright = true
 
 -- Line number style
 vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#5c6370' })
@@ -279,7 +273,6 @@ vim.keymap.set('n', '<leader>/', function()
   })
 end, { desc = '[/] Fuzzily search in current buffer' })
 
-vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
@@ -387,7 +380,6 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
@@ -506,6 +498,14 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 -- Enable ray-x/go.nvim
 require('go').setup()
+
+-- Other keymaps
+vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
+vim.keymap.set('n', '<C-j>', ':wincmd j<CR>')
+vim.keymap.set('n', '<C-h>', ':wincmd h<CR>')
+vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
+
+vim.keymap.set('n', '<leader>sv', ':vsp<CR>')
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
