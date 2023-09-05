@@ -161,6 +161,8 @@ require('lazy').setup({
     },
   },
 
+  { "tpope/vim-commentary" },
+
 }, {})
 
 -- [[ Setting options ]]
