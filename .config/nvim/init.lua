@@ -509,5 +509,7 @@ vim.keymap.set('n', '<C-l>', ':wincmd l<CR>')
 
 vim.keymap.set('n', '<leader>sv', ':vsp<CR>')
 
+vim.keymap.set('n', '<leader>sr', ':%s/<C-r><C-w>')
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
