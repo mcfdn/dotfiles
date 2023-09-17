@@ -163,6 +163,8 @@ require('lazy').setup({
 
   { "tpope/vim-commentary" },
 
+  { "github/copilot.vim" },
+
 }, {})
 
 -- [[ Setting options ]]
@@ -237,6 +239,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- Remap Copilot autocompletion
+vim.g.copilot_assume_mapped = true
+vim.api.nvim_set_keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -500,6 +506,13 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 
 -- Enable ray-x/go.nvim
 require('go').setup()
+
+-- Configure where to use Copilot
+vim.g.copilot_filetypes = {
+  ["*"] = false,
+  ["go"] = true,
+  ["typescript"] = true,
+}
 
 -- Other keymaps
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>')
