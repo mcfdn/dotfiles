@@ -32,7 +32,7 @@ require('lazy').setup({
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
       -- NOTE: Using 'legacy' tag to avoid breakages during fidget.nvim rewrite
-      { 'j-hui/fidget.nvim', tag = "legacy", opts = {} },
+      { 'j-hui/fidget.nvim',       tag = "legacy", opts = {} },
 
       'folke/neodev.nvim',
     },
@@ -55,7 +55,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',          opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -68,7 +68,8 @@ require('lazy').setup({
         changedelete = { text = '~' },
       },
       on_attach = function(bufnr)
-        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk, { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
+        vim.keymap.set('n', '<leader>gp', require('gitsigns').prev_hunk,
+          { buffer = bufnr, desc = '[G]o to [P]revious Hunk' })
         vim.keymap.set('n', '<leader>gn', require('gitsigns').next_hunk, { buffer = bufnr, desc = '[G]o to [N]ext Hunk' })
         vim.keymap.set('n', '<leader>ph', require('gitsigns').preview_hunk, { buffer = bufnr, desc = '[P]review [H]unk' })
       end,
@@ -116,7 +117,7 @@ require('lazy').setup({
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  { 'numToStr/Comment.nvim',         opts = {} },
 
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
@@ -139,16 +140,6 @@ require('lazy').setup({
       'nvim-treesitter/nvim-treesitter-textobjects',
     },
     build = ':TSUpdate',
-  },
-
-  {
-    'ray-x/go.nvim',
-    config = function()
-      require("go").setup()
-    end,
-    event = {'CmdlineEnter'},
-    ft = {'go', 'gomod'},
-    build = ':lua require("go.install").update_all_sync()',
   },
 
   {
@@ -218,9 +209,9 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 -- Line number style
-vim.api.nvim_set_hl(0, 'LineNrAbove', { fg='#5c6370' })
-vim.api.nvim_set_hl(0, 'LineNr', { fg='#d7af00', bold=true })
-vim.api.nvim_set_hl(0, 'LineNrBelow', { fg='#5c6370'})
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#5c6370' })
+vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d7af00', bold = true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#5c6370' })
 
 -- [[ Basic Keymaps ]]
 
@@ -242,7 +233,7 @@ vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 
 -- Remap Copilot autocompletion
 vim.g.copilot_assume_mapped = true
-vim.api.nvim_set_keymap("i", "<C-e>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+vim.api.nvim_set_keymap('i', '<C-e>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -361,7 +352,7 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
   -- NOTE: Remember that lua is a real programming language, and as such it is possible
   -- to define small helper and utility functions so you don't have to repeat yourself
   -- many times.
@@ -401,6 +392,16 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- Format on save
+  if client.supports_method('textDocument/formatting') then
+    vim.api.nvim_create_autocmd('BufWritePre', {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format()
+      end,
+    })
+  end
 end
 
 -- Enable the following language servers
@@ -493,19 +494,6 @@ cmp.setup {
     { name = 'luasnip' },
   },
 }
-
--- Format for ray-x/go.nvim
-local format_sync_grp = vim.api.nvim_create_augroup('GoFormat', {})
-vim.api.nvim_create_autocmd('BufWritePre', {
-  pattern = '*.go',
-  callback = function()
-   require('go.format').goimport()
-  end,
-  group = format_sync_grp,
-})
-
--- Enable ray-x/go.nvim
-require('go').setup()
 
 -- Configure where to use Copilot
 vim.g.copilot_filetypes = {
