@@ -152,8 +152,6 @@ require('lazy').setup({
     },
   },
 
-  { "tpope/vim-commentary" },
-
   { "github/copilot.vim" },
 
 }, {})
