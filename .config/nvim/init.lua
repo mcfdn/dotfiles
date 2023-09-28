@@ -51,7 +51,7 @@ require('lazy').setup({
     },
   },
 
-  { 'folke/which-key.nvim',          opts = {} },
+  { 'folke/which-key.nvim',     opts = {} },
   {
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -71,20 +71,13 @@ require('lazy').setup({
     },
   },
 
-  {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
-    priority = 1000,
-    config = function()
-      vim.cmd.colorscheme 'onedark'
-    end,
-  },
+  { 'ellisonleao/gruvbox.nvim', priority = 1000 },
 
   {
     'nvim-lualine/lualine.nvim',
     opts = {
       options = {
-        theme = 'onedark',
+        theme = 'gruvbox',
         component_separators = '|',
         section_separators = '',
       },
@@ -139,6 +132,10 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 
+-- Theme
+vim.o.background = 'dark'
+vim.cmd([[colorscheme gruvbox]])
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -188,9 +185,9 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 -- Line number style
-vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#5c6370' })
-vim.api.nvim_set_hl(0, 'LineNr', { fg = '#d7af00', bold = true })
-vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#5c6370' })
+vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#928374' })
+vim.api.nvim_set_hl(0, 'LineNr', { fg = '#b8bb26', bold = true })
+vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#928374' })
 
 -- [[ Basic Keymaps ]]
 
