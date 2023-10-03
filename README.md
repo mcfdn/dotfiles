@@ -32,3 +32,18 @@ Enable/disable properties:
 xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Tapping Enabled" 1
 xinput set-prop "PIXA3854:00 093A:0274 Touchpad" "libinput Natural Scrolling Enabled" 1
 ```
+
+Config:
+
+`/etc/X11/xorg.conf.d/30-touchpad.conf`:
+
+```
+Section "InputClass"
+    Identifier "touchpad"
+    Driver "libinput"
+    MatchIsTouchpad "on"
+    Option "Tapping" "on"
+    Option "TappingButtonMap" "lmr"
+    Option "Natural Scrolling" "on"
+EndSection
+```
