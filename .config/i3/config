@@ -41,6 +41,12 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
+# Media controls
+bindsym XF86AudioPlay exec playerctl play
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -50,13 +56,8 @@ bindsym $mod+Return exec i3-sensible-terminal
 # kill focused window
 bindsym $mod+Shift+q kill
 
-# start dmenu (a program launcher)
+# start rofi
 bindsym $mod+d exec rofi -show run
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -189,6 +190,7 @@ bar {
                 separator #504945
 
                 focused_workspace #689d6a #689d6a #1d2021
+                urgent_workspace #d95d0e #d95d0e #ebdbb2
         }
         strip_workspace_numbers yes
 }
@@ -198,7 +200,7 @@ bar {
 client.focused          #1d2021 #1d2021 #fabd2f #1d2021   #1d2021
 client.focused_inactive #1d2021 #1d2021 #ffffff #1d2021   #1d2021
 client.unfocused        #1d2021 #222222 #888888 #1d2021   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.urgent           #2f343a #d95d0e #ebdbb2 #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
@@ -208,11 +210,16 @@ exec --no-startup-id xrandr --output DP-2 --rotate right
 exec --no-startup-id xset r rate 300 50
 exec_always --no-startup-id feh --bg-scale /home/james/Pictures/wallpaper.jpg
 # exec_always compton
+exec "xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
+
+# startup apps
 exec alacritty
 exec firefox
+exec spotify
 
-# Media controls
-# bindsym XF86AudioPlay exec playerctl play
-# bindsym XF86AudioPause exec playerctl pause
-# bindsym XF86AudioNext exec playerctl next
-# bindsym XF86AudioPrev exec playerctl previous
+# Assignments
+assign [class="^firefox$"] $ws2
+assign [class="^Spotify$"] $ws10
+
+# Other Keybinds
+bindsym $mod+Control+l exec "i3lock -c 000000"

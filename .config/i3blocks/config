@@ -39,7 +39,7 @@ label=󰕾
 #label=♪
 instance=Master
 #instance=PCM
-interval=once
+interval=3
 signal=10
 
 # Memory usage
@@ -104,11 +104,12 @@ interval=10
 # Battery indicator
 #
 # The battery instance defaults to 0.
-# [battery]
+[battery]
 # label=BAT
-# #label=⚡
-# #instance=1
-# interval=30
+label=󱐋
+#label=⚡
+#instance=1
+interval=30
 
 # Date Time
 #
