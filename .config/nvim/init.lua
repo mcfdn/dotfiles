@@ -143,7 +143,7 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- Disable mouse mode
-vim.o.mouse = ''
+-- vim.o.mouse = ''
 
 -- Sync clipboard between OS and Neovim.
 -- See `:help 'clipboard'`
