@@ -118,7 +118,7 @@ set $ws4 "4"
 set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
-set $ws8 "8"
+set $ws8 "8: notes"
 set $ws9 "9"
 set $ws10 "10: spotify"
 
@@ -210,9 +210,11 @@ exec "xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
 exec alacritty
 exec firefox
 exec spotify
+exec obsidian
 
 # Assignments
 assign [class="^firefox$"] $ws2
+assign [class="^obsidian$"] $ws8
 assign [class="^Spotify$"] $ws10
 
 # Other Keybinds
