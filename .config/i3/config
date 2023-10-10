@@ -202,9 +202,8 @@ client.background       #ffffff
 # startup commands
 exec --no-startup-id xrandr --output DP-2 --rotate right
 exec --no-startup-id xset r rate 300 50
+exec --no-startup-id picom
 exec_always --no-startup-id feh --bg-scale /home/james/Pictures/wallpaper.jpg
-# exec_always compton
-exec "xautolock -detectsleep -time 3 -locker \"i3lock -c 000000\""
 
 # startup apps
 exec alacritty
