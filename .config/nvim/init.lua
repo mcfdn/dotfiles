@@ -131,7 +131,7 @@ require('lazy').setup({
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {
       keywords = {
-        TODO = { color = "#FBBF24" },
+        TODO = { color = "#458588" },
       },
     },
   },
