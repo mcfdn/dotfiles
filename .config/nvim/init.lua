@@ -217,6 +217,10 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
+-- Keep current selection after indenting in visual mode
+vim.keymap.set('v', '<', '<gv')
+vim.keymap.set('v', '>', '>gv')
+
 -- Remap Copilot autocompletion
 vim.g.copilot_assume_mapped = true
 vim.api.nvim_set_keymap('i', '<C-e>', 'copilot#Accept("<CR>")', { silent = true, expr = true })
