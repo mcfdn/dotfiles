@@ -221,3 +221,15 @@ bindsym $mod+Control+l exec "i3lock -c 000000"
 
 # gApS
 gaps inner 5px
+
+# Set workspaces to specific displays
+workspace $ws1 output primary
+workspace $ws2 output primary
+workspace $ws3 output DP-2 primary
+workspace $ws4 output primary
+workspace $ws5 output primary
+workspace $ws6 output primary
+workspace $ws7 output primary
+workspace $ws8 output primary
+workspace $ws9 output primary
+workspace $ws10 output primary
