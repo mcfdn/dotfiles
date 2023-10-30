@@ -229,4 +229,4 @@ workspace $ws6 output primary
 workspace $ws7 output primary
 workspace $ws8 output primary
 workspace $ws9 output primary
-workspace $ws10 output primary
+workspace $ws10 output DP-2 primary
