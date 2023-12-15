@@ -203,7 +203,7 @@ client.background       #ffffff
 exec --no-startup-id xrandr --output DP-2 --rotate right
 exec --no-startup-id xset r rate 300 50
 exec --no-startup-id picom
-exec_always --no-startup-id feh --bg-scale /home/james/Pictures/wallpaper.jpg
+exec_always --no-startup-id feh --bg-scale /home/james/Pictures/wallpapers/_wallpaper.jpg
 
 # startup apps
 exec --no-startup-id alacritty
