@@ -53,6 +53,10 @@ zstyle ':completion:*' menu select
 # Shift+Tab reverses selection
 bindkey '^[[Z' reverse-menu-complete
 
+# Partial tab completions
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'r:|?=**'
+
 # Aliases
 alias vim="nvim"
 alias history="history 0"
