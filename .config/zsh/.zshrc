@@ -53,9 +53,9 @@ zstyle ':completion:*' menu select
 # Shift+Tab reverses selection
 bindkey '^[[Z' reverse-menu-complete
 
-# Partial tab completions
+# Partial tab completions, stolen from https://github.com/ohmyzsh/ohmyzsh/blob/5ea2c68be88452b33b35ba8004fc9094618bcd87/lib/completion.zsh
 autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'r:|?=**'
+zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
 
 # Aliases
 alias vim="nvim"
