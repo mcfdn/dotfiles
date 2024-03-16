@@ -1,0 +1,39 @@
+let mapleader = " "
+
+" -- Plugins -------------------------------------------------------------------
+Plug 'tpope/vim-fugitive'
+Plug 'machakann/vim-highlightedyank'
+
+" -- Plugin Options ------------------------------------------------------------
+let g:highlightedyank_highlight_color = "rgba(250, 189, 47, 120)"
+let g:highlightedyank_highlight_duration = 150
+
+" -- Settings ------------------------------------------------------------------
+set scrolloff=10
+set incsearch
+set clipboard=unnamedplus
+
+set relativenumber
+set number
+
+" -- Mappings ------------------------------------------------------------------
+map Q gq
+
+" Keep cursor vertically centered when scrolling half up/down
+nmap <C-d> <C-d>zz
+nmap <C-u> <C-u>zz
+
+" Keep cursor vertically centered when cycling search matches
+nmap n nzz
+nmap N Nzz
+
+" -- JetBrains IDE Vim Plugin Mappings -----------------------------------------
+nmap <leader>rn <Action>(RenameElement)
+nmap <leader>rf <Action>(ReformatCode)
+nmap <leader>a <Action>(Annotate)
+
+nmap <leader>t <Action>(Run)
+nmap <leader>d <Action>(Debug)
+nmap <leader>b <Action>(ToggleLineBreakpoint)
+
+nmap <leader>sf :action GotoFile<CR>
