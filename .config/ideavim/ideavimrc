@@ -2,6 +2,7 @@ let mapleader = " "
 
 " -- Plugins -------------------------------------------------------------------
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-commentary'
 Plug 'machakann/vim-highlightedyank'
 
 " -- Plugin Options ------------------------------------------------------------
