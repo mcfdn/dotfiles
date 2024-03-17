@@ -28,12 +28,20 @@ nmap n nzz
 nmap N Nzz
 
 " -- JetBrains IDE Vim Plugin Mappings -----------------------------------------
-nmap <leader>rn <Action>(RenameElement)
-nmap <leader>rf <Action>(ReformatCode)
-nmap <leader>a <Action>(Annotate)
-
-nmap <leader>t <Action>(Run)
-nmap <leader>d <Action>(Debug)
-nmap <leader>b <Action>(ToggleLineBreakpoint)
+nmap <leader>rn :action RenameElement<CR>
+nmap <leader>rf :action ReformatCode<CR>
+nmap <leader>a :action Annotate<CR>
 
 nmap <leader>sf :action GotoFile<CR>
+
+" Run and debug
+nmap <leader>t :action Run<CR>
+nmap <leader>d :action Debug<CR>
+nmap <leader>b :action ToggleLineBreakpoint<CR>
+nmap <leader>e :action ShowErrorDescription<CR>
+
+" Window management
+nmap <leader>sv :action MoveTabRight<CR>
+nmap <leader>vs :action Unsplit<CR>
+nmap <C-l> :action NextSplitter<CR>
+nmap <C-h> :action PrevSplitter<CR>
