@@ -32,20 +32,24 @@ nmap N Nzz
 
 " Navigation
 nmap <leader>sf :action GotoFile<CR>
-nmap <leader>z :action ToggleDistractionFreeMode<CR>
+nmap <leader>t :action GotoTest<CR>
 nmap [d :action GotoPreviousError<CR>
 nmap ]d :action GotoNextError<CR>
+nmap <leader>/ :action Find<CR>
+nmap <leader>? :action RecentFiles<CR>
 
 " Refactoring
-nmap <leader>r :action RenameElement<CR>
+nmap <leader>y :action RenameElement<CR>
 nmap <leader>l :action ReformatCode<CR>
+map <C-space> :action EditorSelectWord<CR>
+map <C-S-space> :action EditorUnSelectWord<CR>
 
 " VCS
 nmap <leader>a :action Annotate<CR>
 nmap <leader>h :action Vcs.ShowTabbedFileHistory<CR>
 
 " Run and debug
-nmap <leader>t :action Run<CR>
+nmap <leader>r :action Run<CR>
 nmap <leader>d :action Debug<CR>
 nmap <leader>b :action ToggleLineBreakpoint<CR>
 nmap <leader>e :action ShowErrorDescription<CR>
@@ -55,3 +59,5 @@ nmap <leader>sv :action MoveTabRight<CR>
 nmap <leader>vs :action Unsplit<CR>
 nmap <C-l> :action NextSplitter<CR>
 nmap <C-h> :action PrevSplitter<CR>
+nmap <leader>x :action CloseAllEditorsButActive<CR>
+nmap <leader>z :action ToggleDistractionFreeMode<CR>
