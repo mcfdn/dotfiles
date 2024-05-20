@@ -47,3 +47,20 @@ Section "InputClass"
     Option "Natural Scrolling" "on"
 EndSection
 ```
+
+Mouse config:
+
+Taken from: https://github.com/i3/i3/issues/3598#issuecomment-660125105
+
+`/etc/X11/xorg.conf.d/99-mouse.conf`:
+
+```
+Section "InputClass"
+    Identifier "Logitech G Pro"
+    MatchDriver "libinput"
+    MatchProduct "Logitech G Pro"
+    MatchIsPointer "on"
+    Option "AccelProfile" "flat"
+    Option "AccelSpeed" "-0.1"
+EndSection
+```
