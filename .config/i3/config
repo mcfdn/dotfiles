@@ -237,3 +237,7 @@ workspace $ws7 output primary
 workspace $ws8 output primary
 workspace $ws9 output primary
 workspace $ws10 output DP-2 primary
+
+# Always float gnome-calculator
+# (`xprop` in terminal + click on window to find out class)
+for_window [class="calculator"] floating enable
