@@ -220,6 +220,8 @@ assign [class="^Spotify$"] $ws10
 
 # Other Keybinds
 bindsym $mod+Control+l exec "i3lock -c 000000"
+# Interactive screenshot - requires gnome-screenshot to be installed.
+bindsym $mod+p exec gnome-screenshot -i
 
 # gApS
 gaps inner 5px
