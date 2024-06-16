@@ -31,6 +31,10 @@ nmap N Nzz
 " -- JetBrains IDE Vim Plugin Mappings -----------------------------------------
 
 " Navigation
+" The IdeaVim back and forward appears to be broken
+nmap <C-o> :action Back<CR>
+nmap <C-i> :action Forward<CR>
+
 nmap <leader>sf :action GotoFile<CR>
 nmap <leader>t :action GotoTest<CR>
 nmap [d :action GotoPreviousError<CR>
