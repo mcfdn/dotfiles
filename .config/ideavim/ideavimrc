@@ -41,6 +41,7 @@ nmap [d :action GotoPreviousError<CR>
 nmap ]d :action GotoNextError<CR>
 nmap <leader>/ :action Find<CR>
 nmap <leader>? :action RecentFiles<CR>
+nmap <leader>f :action FindInPath<CR>
 
 " Refactoring
 nmap <leader>y :action RenameElement<CR>
