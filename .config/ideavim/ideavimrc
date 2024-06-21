@@ -64,5 +64,7 @@ nmap <leader>sv :action MoveTabRight<CR>
 nmap <leader>vs :action Unsplit<CR>
 nmap <C-l> :action NextSplitter<CR>
 nmap <C-h> :action PrevSplitter<CR>
+nmap <C-S-l> :action MoveEditorToOppositeTabGroup<CR>
+nmap <C-S-h> :action MoveEditorToOppositeTabGroup<CR>
 nmap <leader>x :action CloseAllEditorsButActive<CR>
 nmap <leader>z :action ToggleDistractionFreeMode<CR>
