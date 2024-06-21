@@ -28,6 +28,10 @@ nmap <C-u> <C-u>zz
 nmap n nzz
 nmap N Nzz
 
+" Keep current selection after indenting in visual mode
+vmap < <gv
+vmap > >gv
+
 " -- JetBrains IDE Vim Plugin Mappings -----------------------------------------
 
 " Navigation
