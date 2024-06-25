@@ -188,9 +188,6 @@ vim.o.rnu = true
 -- Maintain a 10 character buffer at the top and bottom
 vim.o.scrolloff = 10
 
--- Fat cursor
-vim.o.guicursor = ''
-
 vim.o.splitbelow = true
 vim.o.splitright = true
 
