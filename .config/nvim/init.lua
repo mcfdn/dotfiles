@@ -142,6 +142,9 @@ require('lazy').setup({
 
 -- [[ Setting options ]]
 
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+
 -- Theme
 vim.o.background = 'dark'
 vim.cmd([[colorscheme gruvbox]])
