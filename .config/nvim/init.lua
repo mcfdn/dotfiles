@@ -155,9 +155,6 @@ vim.o.hlsearch = false
 -- Make line numbers default
 vim.wo.number = true
 
--- Disable mouse mode
--- vim.o.mouse = ''
-
 -- Sync clipboard between OS and Neovim.
 -- See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
