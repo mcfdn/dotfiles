@@ -191,11 +191,6 @@ vim.o.scrolloff = 10
 vim.o.splitbelow = true
 vim.o.splitright = true
 
--- Line number style
-vim.api.nvim_set_hl(0, 'LineNrAbove', { fg = '#928374' })
-vim.api.nvim_set_hl(0, 'LineNr', { fg = '#b8bb26', bold = true })
-vim.api.nvim_set_hl(0, 'LineNrBelow', { fg = '#928374' })
-
 -- [[ Basic Keymaps ]]
 
 -- Keep cursor vertically centered when scrolling half up/down
