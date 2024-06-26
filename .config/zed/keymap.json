@@ -19,6 +19,7 @@
       "space s v": "pane::SplitRight",
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "alt-o": "projects::OpenRecent",
 
       // Refactoring
       "space c a": "editor::ToggleCodeActions",
