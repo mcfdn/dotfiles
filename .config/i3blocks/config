@@ -34,28 +34,29 @@ markup=none
 # The second parameter overrides the mixer selection
 # See the script for details.
 [volume]
-# label=VOL
-label=󰕾
+label=VOL
+# label=󰕾
 #label=♪
 instance=Master
 #instance=PCM
 interval=3
 signal=10
+separator=true
 
 # Memory usage
 #
 # The type defaults to "mem" if the instance is not specified.
 [memory]
-# label=MEM
-label=
+label=MEM
+# label=
 separator=false
 interval=10
 
-# [memory]
-# label=SWP
-# instance=swap
-# separator=false
-# interval=30
+[memory]
+label=SWP
+instance=swap
+separator=true
+interval=30
 
 # Disk usage
 #
@@ -92,21 +93,22 @@ separator=false
 # The script may be called with -w and -c switches to specify thresholds,
 # see the script for details.
 [cpu_usage]
-# label=CPU
-label=󰍛
+label=CPU
+# label=󰍛
 interval=10
 # min_width=CPU: 100.00%
-#separator=false
+separator=false
 
-#[load_average]
-#interval=10
+[load_average]
+interval=5
+separator=true
 
 # Battery indicator
 #
 # The battery instance defaults to 0.
 [battery]
-# label=BAT
-label=󱐋
+label=BAT
+# label=󱐋
 #label=⚡
 #instance=1
 interval=30
