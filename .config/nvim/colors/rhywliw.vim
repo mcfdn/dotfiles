@@ -102,7 +102,7 @@ hi! link Debug            Special
 call s:h("DiagnosticError",    {"fg": s:red})
 call s:h("DiagnosticWarn",     {"fg": s:yellow})
 call s:h("DiagnosticInfo",     {"fg": s:blue})
-call s:h("DiagnosticHint",     {"fg": s:green})
+call s:h("DiagnosticHint",     {"fg": s:light_gray})
 
 call s:h("Underlined",         {"fg": s:norm, "gui": "underline", "cterm": "underline"})
 call s:h("Ignore",             {"fg": s:bg})
