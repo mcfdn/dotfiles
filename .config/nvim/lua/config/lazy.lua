@@ -18,5 +18,5 @@ require("lazy").setup({
     spec = {
         { import = "plugins" },
     },
-    install = { colorscheme = { "komau" } },
+    install = { colorscheme = { "rhywliw" } },
 })
