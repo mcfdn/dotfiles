@@ -25,3 +25,6 @@ vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers)
+
+-- Git
+vim.keymap.set("n", "<leader>a", ":Git blame<CR>")
