@@ -15,6 +15,7 @@ local config = function()
                     "node_modules",
                 },
                 disable_devicons = true,
+                hidden = true,
             },
         },
         extensions = {
