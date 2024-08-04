@@ -13,6 +13,7 @@ local config = function()
             find_files = {
                 file_ignore_patterns = {
                     "node_modules",
+                    ".git",
                 },
                 disable_devicons = true,
                 hidden = true,
