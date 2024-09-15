@@ -4,8 +4,8 @@ local on_attach = function(_, bufnr)
 
     vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
 
-    vim.keymap.set("n", "<leader>y", vim.lsp.buf.rename, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr })
+    vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { buffer = bufnr })
 
     vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
 
