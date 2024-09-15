@@ -8,6 +8,7 @@ vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
+vim.o.wrap = false
 
 vim.o.hlsearch = false
 vim.o.ignorecase = true
