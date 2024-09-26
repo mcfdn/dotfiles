@@ -7,6 +7,9 @@ local config = function()
             "rust",
             "typescript",
             "vim",
+            "vimdoc",
+            "luadoc",
+            "markdown",
         },
     })
 end
