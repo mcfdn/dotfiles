@@ -26,5 +26,8 @@ vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files)
 vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep)
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers)
 
+-- Neo-tree
+vim.keymap.set("n", "<leader>t", ":Neotree position=left toggle=true<CR>")
+
 -- Git
 vim.keymap.set("n", "<leader>a", ":Git blame<CR>")
