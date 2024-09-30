@@ -23,6 +23,7 @@ local servers = {
     rust_analyzer = {},
     ts_ls = {},
     volar = {},
+    eslint = {},
 }
 
 local config = function()
