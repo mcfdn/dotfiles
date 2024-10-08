@@ -9,6 +9,8 @@ vim.keymap.set("n", "N", "Nzz")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+vim.keymap.set("v", "y", "may`a")
+
 -- Diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
