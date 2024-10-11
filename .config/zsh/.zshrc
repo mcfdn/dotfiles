@@ -48,8 +48,8 @@ bindkey '^[[1;5C' forward-word
 bindkey '^[[1;5D' backward-word
 
 ## Keybinds - zsh-history-substring-search
-bindkey '^K' history-substring-search-up
-bindkey '^J' history-substring-search-down
+bindkey '^[k' history-substring-search-up
+bindkey '^[j' history-substring-search-down
 
 # Tab completion/highlighting
 zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
