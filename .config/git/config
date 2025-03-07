@@ -1,0 +1,13 @@
+[commit]
+	gpgsign = true
+	verbose = true
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
