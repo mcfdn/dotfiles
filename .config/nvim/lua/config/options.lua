@@ -7,6 +7,7 @@ vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
 vim.o.wrap = false
+vim.o.cursorline = true
 
 vim.o.hlsearch = false
 vim.o.ignorecase = true
