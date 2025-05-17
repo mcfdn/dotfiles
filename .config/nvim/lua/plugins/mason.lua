@@ -1,17 +1,3 @@
-local on_attach = function(_, bufnr)
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = bufnr })
-    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
-
-    vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = bufnr })
-    vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { buffer = bufnr })
-
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr })
-
-    vim.keymap.set("n", "<leader>l", vim.lsp.buf.format, { buffer = bufnr })
-end
-
 local servers = {
     gopls = {},
     lua_ls = {
@@ -34,16 +20,13 @@ local config = function()
 
     mason_lspconfig.setup {
         ensure_installed = vim.tbl_keys(servers),
-    }
-
-    mason_lspconfig.setup_handlers {
-        function(server_name)
-            require("lspconfig")[server_name].setup {
-                capabilities = capabilities,
-                on_attach = on_attach,
-                settings = servers[server_name],
-            }
-        end,
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
+            server.capabilities = vim.tbl_deep_extend('force', {}, capabilities, server.capabilities or {})
+            require('lspconfig')[server_name].setup(server)
+          end,
+        },
     }
 end
 
