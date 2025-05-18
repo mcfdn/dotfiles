@@ -11,8 +11,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
         vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = event.buf })
 
-        vim.keymap.set("n", "gr", require("telescope.builtin").lsp_references, { buffer = event.buf })
-
         vim.keymap.set("n", "<leader>r", vim.lsp.buf.rename, { buffer = event.buf })
         vim.keymap.set("n", "<leader>c", vim.lsp.buf.code_action, { buffer = event.buf })
 
