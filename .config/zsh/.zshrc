@@ -68,6 +68,7 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 alias vim="nvim"
 alias history="history 0"
 alias lg="lazygit"
+alias y="yazi"
 
 ## Aliases - Git
 alias g="git"
