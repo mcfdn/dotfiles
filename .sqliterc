@@ -1,0 +1,3 @@
+.mode table
+.nullvalue NULL
+.timer on
