@@ -1,0 +1,17 @@
+[include]
+    path = ~/.gitconfig-private
+[commit]
+	gpgsign = true
+	verbose = true
+[core]
+	excludesfile = /home/james/.config/.gitignore
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	algorithm = histogram
+[push]
+	autoSetupRemote = true
+[pull]
+	rebase = true
