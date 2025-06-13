@@ -6,6 +6,14 @@ vim.api.nvim_create_autocmd("FileType", {
     end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "rust" },
+    callback = function()
+        vim.opt.textwidth = 100
+        vim.opt.colorcolumn = "100"
+    end,
+})
+
 vim.api.nvim_create_autocmd('LspAttach', {
     callback = function(event)
         vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = event.buf })
