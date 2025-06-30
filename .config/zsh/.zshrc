@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Exports
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
 
@@ -32,9 +25,6 @@ setopt share_history          # share command history data
 
 # Match .dotfiles automatically
 setopt globdots
-
-# Theme
-source ~/.zsh/powerlevel10k/powerlevel10k.zsh-theme
 
 # Plugins
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
@@ -68,6 +58,7 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
 
 # Aliases
+alias ls="ls --color=auto"
 alias vim="nvim"
 alias history="history 0"
 alias lg="lazygit"
@@ -89,5 +80,52 @@ alias grsh="git reset --soft HEAD~"
 
 alias la="ls -la"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# Prompt configiguration. `man zshmisc` is helpful here.
+# Allow command substitution in prompt.
+setopt PROMPT_SUBST
+
+# Pre-commands. This doesn't strictly belong in the prompt section, but it's
+# the only place I'm actually using it.
+precmd() {
+    # The previous exit code needs to be obtained before we render the prompt,
+    # else the wrong code will be used.
+    PREV_EXIT_CODE=$?
+}
+
+# Display the working directory.
+short_dir() {
+    echo "%F{66}%~%f "
+}
+
+# Display the current git branch, if there is one.
+git_branch() {
+    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
+    [[ -n $branch ]] && echo "%F{106}$branch%f "
+}
+
+# Display the number of background jobs, if there is at least 1.
+bg_jobs() {
+    echo '%(1j.%F{208}[%j]%f .)'
+}
+
+# Display the exit code of the previous command if it is not 0.
+exit_code() {
+    (( PREV_EXIT_CODE != 0 )) && echo "%F{167}[$PREV_EXIT_CODE]%f "
+}
+
+# Display the current timestamp (%*).
+timestamp() {
+    echo "%F{242}%*%f"
+}
+
+# Configure the prompt character.
+prompt_char() {
+    echo "%F{242}>%f "
+}
+
+# Configure the main prompt (left).
+PROMPT='$(short_dir)$(git_branch)
+$(prompt_char)'
+
+# Configure the right prompt.
+RPROMPT='$(exit_code)$(bg_jobs)$(timestamp)'
