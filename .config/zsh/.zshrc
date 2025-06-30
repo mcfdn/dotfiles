@@ -38,7 +38,7 @@ export GPG_TTY=$(tty)
 
 # Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
 [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
-# [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
+[[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
 
 # Keybinds
 bindkey -e
