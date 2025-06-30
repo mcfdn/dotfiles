@@ -1,18 +1,6 @@
-# Exports
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
-
-export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-export TERM="xterm-256color"
-export TERMINAL="alacritty"
-export EDITOR="nvim"
-export VISUAL="nvim"
-export GPG_TTY=$(tty)
-
 # Much history
-HISTSIZE=50000
-SAVEHIST=10000
+HISTSIZE=1000000
+SAVEHIST=1000000
 HISTFILE=~/.cache/zsh/history
 
 # https://github.com/ohmyzsh/ohmyzsh/blob/master/lib/history.zsh
@@ -26,35 +14,47 @@ setopt share_history          # share command history data
 # Match .dotfiles automatically
 setopt globdots
 
-# Plugins
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+autoload -Uz compinit && compinit
 
-HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+# Exports
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+export TERM="xterm-256color"
+export TERMINAL="alacritty"
+export EDITOR="nvim"
+export VISUAL="nvim"
+export GPG_TTY=$(tty)
+
+# Plugins
+# zsh-autosuggestions has broken a bit in zsh 5.9, and doesn't mute the text
+# correctly.
+# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # https://github.com/zsh-users/zsh-autosuggestions/tree/master#suggestion-highlight-style
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262"
+# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262"
+
+# Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
+[[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
+# [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
 
 # Keybinds
 bindkey -e
 
-bindkey '^[[1;5C' forward-word
-bindkey '^[[1;5D' backward-word
+# Use fzf to search history
+bindkey '^R' fzf-history-widget
 
-## Keybinds - zsh-history-substring-search
-bindkey '^K' history-substring-search-up
-bindkey '^J' history-substring-search-down
+# Ctrl+J for down, Ctrl+K for up
+bindkey '^K' up-line-or-search
+bindkey '^J' down-line-or-search
 
 # Tab completion/highlighting
-zstyle ':completion:*:*:git:*' script /usr/local/etc/bash_completion.d/git-completion.bash
-fpath=(/usr/local/share/zsh-completions $fpath)
-autoload -U compinit && compinit
-zmodload -i zsh/complist
 zstyle ':completion:*' menu select
-# Shift+Tab reverses selection
-bindkey '^[[Z' reverse-menu-complete
+bindkey '^[[Z' reverse-menu-complete # Shift+Tab reverses selection
 
 # Partial tab completions, stolen from https://github.com/ohmyzsh/ohmyzsh/blob/5ea2c68be88452b33b35ba8004fc9094618bcd87/lib/completion.zsh
-autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
 
 # Aliases
