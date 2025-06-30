@@ -15,6 +15,7 @@ export TERM="xterm-256color"
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="nvim"
+export GPG_TTY=$(tty)
 
 # Much history
 HISTSIZE=50000
