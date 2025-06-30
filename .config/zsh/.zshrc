@@ -11,6 +11,7 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+export TERM="xterm-256color"
 export TERMINAL="alacritty"
 export EDITOR="nvim"
 export VISUAL="nvim"
