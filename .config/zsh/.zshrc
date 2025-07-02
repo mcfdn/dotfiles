@@ -17,9 +17,6 @@ setopt share_history          # share command history data
 # Match .dotfiles automatically
 setopt globdots
 
-# Allow command substitution in prompt
-setopt PROMPT_SUBST
-
 # Initialise zsh completions
 autoload -Uz compinit && compinit
 
@@ -91,48 +88,84 @@ alias gdc="git diff --cached"
 
 # Note: `man zshmisc` is helpful here.
 
-# Pre-commands. This doesn't strictly belong in the prompt section, but it's
-# the only place I'm actually using it.
-precmd() {
-    # The previous exit code needs to be obtained before we render the prompt,
-    # else the wrong code will be used.
-    PREV_EXIT_CODE=$?
+function preexec() {
+    # Start a timer before each command is executed.
+    # This is used in prompt_timer().
+    typeset -g __CMD_TIMER=$(date +%s%3N)
+
+    # Store the delta time that the last command took to execute in a global
+    # variable so it persists across prompt renders (even if no command is
+    # executed).
+    typeset -g __CMD_DELTA=0
 }
 
-# Display the working directory.
-prompt_dir() {
-    echo "%F{66}%~%f "
+# This function is called before each command prompt is displayed. It's only
+# being used to build the prompt in this case.
+function precmd() {
+    # The previous exit code needs to be obtained before we do anything else,
+    # otherwise the wrong code may be displayed.
+    local prev_exit_code=$?
+
+    # Set prompt dir. More info in `man zshmisc` under `%~`.
+    local prompt_dir="%F{blue}%~%f "
+
+    # Display background jobs if any are running. More info in `man zshmisc`
+    # under `%j`.
+    local prompt_bg_jobs="%(1j.%F{cyan}&%j%f .)"
+
+    # Display the prompt character.
+    local prompt_char="%F{242}$%f "
+
+    # Display the current git branch if we're in a git repository.
+    local prompt_git_branch
+    if command git rev-parse --is-inside-work-tree &>/dev/null; then
+        # Get the current git branch name, falling back to commit hash if HEAD
+        # is detached.
+        local ref=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+
+        # Append an asterisk (*) if there are uncommitted changes.
+        local dirty=""
+        if [[ -n $ref ]]; then
+            if ! git diff --quiet --ignore-submodules --cached || ! git diff --quiet --ignore-submodules; then
+                dirty="%F{yellow}*%f"
+            fi
+        fi
+
+        # Append a caret (^) if the local branch is ahead of the upstream
+        # branch.
+        # First, check if the upstream branch exists.
+        local ahead=""
+        if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
+            # Count the number of commits ahead of the upstream.
+            local commits_ahead=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null | awk '{print $1}')
+            if (( commits_ahead > 0 )); then
+                ahead="%F{yellow}^${commits_ahead}%f"
+            fi
+        fi
+
+        prompt_git_branch="%F{green}${ref}${dirty}${ahead}%f "
+    fi
+
+    # Display the exit code of the previous command if it was not 0.
+    local prompt_exit_code
+    if (( prev_exit_code != 0 )); then
+        prompt_exit_code="%F{167}!${prev_exit_code}%f "
+    fi
+
+    # Display the time taken for the last command to execute.
+    if [[ -n $__CMD_TIMER && -n $__CMD_DELTA ]]; then
+        local now=$(date +%s%3N)
+        __CMD_DELTA=$(($now-$__CMD_TIMER))
+        unset __CMD_TIMER
+
+        prompt_timer="%F{cyan}${__CMD_DELTA}ms%f"
+    fi
+
+    # Configure the main prompt (left).
+    export PROMPT="
+${prompt_dir}${prompt_git_branch}${prompt_exit_code}${prompt_bg_jobs}
+${prompt_char}"
+
+    # Configure the right prompt.
+    export RPROMPT="${prompt_timer}"
 }
-
-# Display the current git branch, if there is one.
-prompt_git_branch() {
-    local branch=$(git symbolic-ref --short HEAD 2>/dev/null)
-    [[ -n $branch ]] && echo "%F{106}$branch%f "
-}
-
-# Display the number of background jobs, if there is at least 1.
-prompt_bg_jobs() {
-    echo '%(1j.%F{208}[%j]%f .)'
-}
-
-# Display the exit code of the previous command if it is not 0.
-prompt_exit_code() {
-    (( PREV_EXIT_CODE != 0 )) && echo "%F{167}[$PREV_EXIT_CODE]%f "
-}
-
-# Display the current timestamp (%*).
-prompt_timestamp() {
-    echo "%F{242}%*%f"
-}
-
-# Configure the prompt character.
-prompt_char() {
-    echo "%F{242}>%f "
-}
-
-# Configure the main prompt (left).
-PROMPT='$(prompt_dir)$(prompt_git_branch)
-$(prompt_char)'
-
-# Configure the right prompt.
-RPROMPT='$(prompt_exit_code)$(prompt_bg_jobs)$(prompt_timestamp)'
