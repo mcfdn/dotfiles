@@ -192,7 +192,7 @@ assign [class="^Spotify$"] $ws10
 bindsym $mod+Control+l exec "i3lock -c 222222"
 bindsym $mod+p exec gnome-screenshot -i
 
-gaps inner 5px
+gaps inner 0px
 
 # Set workspaces to specific displays
 workspace $ws1 output primary
@@ -205,6 +205,8 @@ workspace $ws7 output primary
 workspace $ws8 output primary
 workspace $ws9 output primary
 workspace $ws10 output DP-2 primary
+
+for_window [class="^.*"] border pixel 1
 
 # Some programs should always float
 for_window [class="calculator"] floating enable
