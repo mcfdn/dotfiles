@@ -32,3 +32,9 @@ vim.o.termguicolors = true
 
 vim.o.splitright = true
 vim.o.splitbelow = true
+
+vim.opt.list = true
+vim.opt.listchars = {
+  tab = '→ ',
+  trail = '·',
+}
