@@ -23,7 +23,7 @@ background = "0x282828"
 foreground = "0xebdbb2"
 
 [font]
-size = 8
+size = 10
 
 [font.normal]
 family = "MesloLGS NF"
