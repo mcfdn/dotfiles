@@ -35,13 +35,6 @@ export GPG_TTY=$(tty)
 
 # -- Plugins ---------------------------------------------------------------------------------------
 
-# zsh-autosuggestions has broken a bit in zsh 5.9, and doesn't mute the text
-# correctly.
-# source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# https://github.com/zsh-users/zsh-autosuggestions/tree/master#suggestion-highlight-style
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#626262"
-
 # Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
 [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 [[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
