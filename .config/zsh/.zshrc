@@ -74,15 +74,9 @@ alias la="ls -la"
 alias grep="grep --colour=auto"
 alias history="history 0"
 
-alias lg="lazygit"
-alias y="yazi"
-alias vim="nvim"
-
 alias g="git"
-alias grsh="git reset --soft HEAD~"
-alias gp="git pull"
-alias gP="git push"
-alias gdc="git diff --cached"
+alias lg="lazygit"
+alias vim="nvim"
 
 # -- Prompt ----------------------------------------------------------------------------------------
 
