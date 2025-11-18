@@ -10,7 +10,11 @@ return {
             enable_git_status = false,
             enable_diagnostics = false,
             default_component_configs = {
-                icon = {},
+                icon = {
+                    folder_closed = "+",
+                    folder_open = "-",
+                    folder_empty = "0",
+                },
             },
             filesystem = {
                 filtered_items = {
