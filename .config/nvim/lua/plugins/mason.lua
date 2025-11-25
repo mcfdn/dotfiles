@@ -1,11 +1,5 @@
 local servers = {
     gopls = {},
-    lua_ls = {
-        Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-        },
-    },
     rust_analyzer = {},
 }
 
