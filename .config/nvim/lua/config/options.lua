@@ -38,3 +38,6 @@ vim.opt.listchars = {
   tab = '→ ',
   trail = '·',
 }
+
+-- Wider column for airblade/vim-gitgutter, diagnostics, dap
+vim.o.signcolumn = "yes:3"
