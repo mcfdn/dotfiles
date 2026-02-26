@@ -24,9 +24,9 @@ vim.keymap.set("n", "<C-h>", ":wincmd h<CR>")
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>")
 
 -- Telescope
-vim.keymap.set("n", "<leader>sf", require("telescope.builtin").find_files)
-vim.keymap.set("n", "<leader>f", require("telescope.builtin").live_grep)
-vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers)
+vim.keymap.set("n", "<leader>sf", function() require("fzf-lua").files() end, { desc = "Find files" })
+vim.keymap.set("n", "<leader>f",  function() require("fzf-lua").live_grep() end, { desc = "Live grep" })
+vim.keymap.set("n", "<leader><space>", function() require("fzf-lua").buffers() end, { desc = "Buffers" })
 
 -- Neo-tree
 vim.keymap.set("n", "<leader>t", ":Neotree position=left toggle=true<CR>")
