@@ -19,7 +19,15 @@ vim.o.rnu = true
 vim.o.scrolloff = 10
 
 vim.o.clipboard = "unnamedplus"
+
+-- Make sure the undo directory exists
+local undodir = vim.fn.stdpath('data') .. '/undo'
+if vim.fn.isdirectory(undodir) == 0 then
+  vim.fn.mkdir(undodir, 'p')
+end
+
 vim.o.undofile = true
+vim.o.undodir = undodir
 
 vim.o.updatetime = 250
 vim.o.timeout = true
