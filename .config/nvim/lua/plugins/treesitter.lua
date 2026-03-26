@@ -1,6 +1,5 @@
 local config = function()
     require("nvim-treesitter.configs").setup({
-        build = ":TSUpdate",
         ensure_installed = {
             "go",
             "lua",
@@ -17,5 +16,6 @@ end
 return {
     "nvim-treesitter/nvim-treesitter",
     lazy = false,
+    build = ":TSUpdate",
     config = config,
 }
