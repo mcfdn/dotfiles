@@ -6,6 +6,9 @@ local config = function()
             file_icons = false,
             git_icons = false,
         },
+        fzf_opts = {
+            ['--cycle'] = true,
+        },
     })
 end
 
