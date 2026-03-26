@@ -25,14 +25,16 @@ return {
     {
         "williamboman/mason.nvim",
         lazy = false,
-        opts = {
-            cmd = "Mason",
-        },
+        opts = {},
     },
     {
         "williamboman/mason-lspconfig.nvim",
         lazy = false,
-        dependencies = "williamboman/mason.nvim",
+        dependencies = {
+            "williamboman/mason.nvim",
+            "neovim/nvim-lspconfig",
+            "hrsh7th/cmp-nvim-lsp",
+        },
         config = config,
     },
 }
