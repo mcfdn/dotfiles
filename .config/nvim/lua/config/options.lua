@@ -15,7 +15,6 @@ vim.o.smartcase = true
 
 vim.o.number = true
 vim.o.rnu = true
-vim.o.signcolumn = "yes"
 
 vim.o.scrolloff = 10
 
