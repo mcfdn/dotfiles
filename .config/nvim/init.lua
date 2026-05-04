@@ -112,7 +112,7 @@ vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", keymap_opts)
 vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", keymap_opts)
 vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", keymap_opts)
 vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", keymap_opts)
-vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, keymap_opts)
+vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, keymap_opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, keymap_opts)
 vim.keymap.set("n", "<leader>a", ":Git blame<CR>", keymap_opts)
 
