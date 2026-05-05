@@ -49,6 +49,7 @@ vim.pack.add({
   "https://github.com/nvim-treesitter/nvim-treesitter",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/ray-x/go.nvim",
+  "https://github.com/stevearc/oil.nvim",
 })
 
 vim.lsp.enable({
@@ -115,6 +116,7 @@ vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<cr>", keymap_opts)
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, keymap_opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, keymap_opts)
 vim.keymap.set("n", "<leader>a", "<cmd>Git blame<cr>", keymap_opts)
+vim.keymap.set("n", "-", "<cmd>Oil<cr>", keymap_opts)
 
 vim.g.gruvbox_material_background = "medium"
 vim.cmd.colorscheme("gruvbox-material")
@@ -123,6 +125,7 @@ require("nvim-autopairs").setup()
 require("Comment").setup()
 require("fidget").setup()
 require("go").setup()
+require("oil").setup()
 
 vim.api.nvim_create_user_command("TSInstallMine", function()
   require("nvim-treesitter").install({ "go", "rust" })
