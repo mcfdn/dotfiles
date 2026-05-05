@@ -95,26 +95,26 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { silent = true, buffer = ev.buf }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "<leader>l", vim.lsp.buf.format, opts)
-    vim.keymap.set("i", "<C-f>", vim.lsp.completion.get, opts)
+    vim.keymap.set("i", "<c-f>", vim.lsp.completion.get, opts)
   end,
 })
 
 local keymap_opts = { silent = true }
-vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", keymap_opts)
-vim.keymap.set("n", "<C-d>", "<C-d>zz", keymap_opts)
-vim.keymap.set("n", "<C-u>", "<C-u>zz", keymap_opts)
+vim.keymap.set({ "n", "v" }, "<space>", "<nop>", keymap_opts)
+vim.keymap.set("n", "<c-d>", "<c-d>zz", keymap_opts)
+vim.keymap.set("n", "<c-u>", "<c-u>zz", keymap_opts)
 vim.keymap.set("n", "n", "nzz", keymap_opts)
 vim.keymap.set("n", "N", "Nzz", keymap_opts)
 vim.keymap.set("v", "<", "<gv", keymap_opts)
 vim.keymap.set("v", ">", ">gv", keymap_opts)
-vim.keymap.set("v", "y", "ygv<Esc>", keymap_opts)
-vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", keymap_opts)
-vim.keymap.set("n", "<C-j>", ":wincmd j<CR>", keymap_opts)
-vim.keymap.set("n", "<C-h>", ":wincmd h<CR>", keymap_opts)
-vim.keymap.set("n", "<C-l>", ":wincmd l<CR>", keymap_opts)
+vim.keymap.set("v", "y", "ygv<esc>", keymap_opts)
+vim.keymap.set("n", "<c-k>", "<cmd>wincmd k<cr>", keymap_opts)
+vim.keymap.set("n", "<c-j>", "<cmd>wincmd j<cr>", keymap_opts)
+vim.keymap.set("n", "<c-h>", "<cmd>wincmd h<cr>", keymap_opts)
+vim.keymap.set("n", "<c-l>", "<cmd>wincmd l<cr>", keymap_opts)
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, keymap_opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, keymap_opts)
-vim.keymap.set("n", "<leader>a", ":Git blame<CR>", keymap_opts)
+vim.keymap.set("n", "<leader>a", "<cmd>Git blame<cr>", keymap_opts)
 
 vim.g.gruvbox_material_background = "medium"
 vim.cmd.colorscheme("gruvbox-material")
