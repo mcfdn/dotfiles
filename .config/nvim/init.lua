@@ -123,7 +123,11 @@ vim.cmd.colorscheme("gruvbox-material")
 require("nvim-autopairs").setup()
 require("fidget").setup()
 require("go").setup()
-require("oil").setup()
+require("oil").setup({
+    view_options = {
+        show_hidden = true,
+    },
+})
 
 vim.api.nvim_create_user_command("TSInstallMine", function()
   require("nvim-treesitter").install({ "go", "rust" })
