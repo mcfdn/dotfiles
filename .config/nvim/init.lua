@@ -42,7 +42,6 @@ vim.pack.add({
   "https://github.com/sainnhe/gruvbox-material",
   "https://github.com/windwp/nvim-autopairs",
   "https://github.com/airblade/vim-gitgutter",
-  "https://github.com/numToStr/Comment.nvim",
   "https://github.com/j-hui/fidget.nvim",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/ibhagwan/fzf-lua",
@@ -122,7 +121,6 @@ vim.g.gruvbox_material_background = "medium"
 vim.cmd.colorscheme("gruvbox-material")
 
 require("nvim-autopairs").setup()
-require("Comment").setup()
 require("fidget").setup()
 require("go").setup()
 require("oil").setup()
