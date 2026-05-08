@@ -1,6 +1,4 @@
-local vim = vim
 local undodir = vim.fn.stdpath("data") .. "/undo"
-
 vim.fn.mkdir(undodir, "p")
 
 vim.g.mapleader = " "
