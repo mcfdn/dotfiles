@@ -1,8 +1,3 @@
--- Prerequisites:
--- cargo install tree-sitter-cli
--- go install golang.org/x/tools/gopls@latest
--- rustup component add rust-analyzer
-
 local vim = vim
 local undodir = vim.fn.stdpath("data") .. "/undo"
 
@@ -45,15 +40,15 @@ vim.pack.add({
   "https://github.com/j-hui/fidget.nvim",
   "https://github.com/tpope/vim-fugitive",
   "https://github.com/ibhagwan/fzf-lua",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
+  "https://github.com/nvim-treesitter/nvim-treesitter", -- cargo install tree-sitter-cli
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/ray-x/go.nvim",
   "https://github.com/stevearc/oil.nvim",
 })
 
 vim.lsp.enable({
-  "gopls",
-  "rust_analyzer",
+  "gopls", -- go install golang.org/x/tools/gopls@latest
+  "rust_analyzer", -- rustup component add rust-analyzer
 })
 
 local augroup = vim.api.nvim_create_augroup("mcfdn.init", { clear = true })
