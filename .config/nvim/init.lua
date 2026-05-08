@@ -18,7 +18,6 @@ vim.o.clipboard = "unnamedplus"
 vim.o.undofile = true
 vim.o.undodir = undodir
 vim.o.updatetime = 250
-vim.o.timeout = true
 vim.o.timeoutlen = 300
 vim.o.termguicolors = true
 vim.o.splitright = true
