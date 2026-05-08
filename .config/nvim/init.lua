@@ -85,7 +85,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     local opts = { silent = true, buffer = ev.buf }
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
     vim.keymap.set("n", "<leader>l", vim.lsp.buf.format, opts)
-    vim.keymap.set("i", "<c-f>", vim.lsp.completion.get, opts)
   end,
 })
 
