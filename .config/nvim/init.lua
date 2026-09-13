@@ -83,6 +83,7 @@ vim.keymap.set("n", "]q", "<cmd>cnext<cr>", { silent = true })
 vim.keymap.set("n", "[q", "<cmd>cprev<cr>", { silent = true })
 vim.keymap.set("n", "<leader>d", vim.diagnostic.open_float, { silent = true })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { silent = true })
+vim.keymap.set("n", "<esc>", "<cmd>nohlsearch<cr>", { silent = true })
 vim.keymap.set("n", "-", "<cmd>Oil<cr>", { silent = true })
 
 vim.cmd.colorscheme("a")
