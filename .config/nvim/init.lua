@@ -31,6 +31,7 @@ vim.opt.path:append("**")
 vim.pack.add({
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/stevearc/oil.nvim",
+  "https://github.com/j-hui/fidget.nvim",
 })
 
 vim.lsp.enable({
@@ -89,3 +90,4 @@ vim.keymap.set("n", "-", "<cmd>Oil<cr>", { silent = true })
 vim.cmd.colorscheme("a")
 
 require("oil").setup({ view_options = { show_hidden = true } })
+require("fidget").setup({})
