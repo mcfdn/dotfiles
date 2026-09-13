@@ -24,7 +24,7 @@ vim.o.splitbelow = true
 vim.o.signcolumn = "yes:1"
 vim.o.list = true
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
-vim.opt.listchars = { tab = "→ ", trail = "·" }
+vim.opt.listchars = { tab = "  ", trail = "." }
 vim.o.grepprg = "rg --vimgrep --smart-case"
 vim.opt.path:append("**")
 
