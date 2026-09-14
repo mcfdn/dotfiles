@@ -18,9 +18,8 @@ setopt globdots
 [[ -d $XDG_CACHE_HOME/zsh ]] || mkdir -p -- "$XDG_CACHE_HOME/zsh"
 autoload -Uz compinit && compinit -d "$XDG_CACHE_HOME/zsh/zcompdump"
 
-# -- Exports ---------------------------------------------------------------------------------------
-
-export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin:$HOME/.cargo/bin
+typeset -U path PATH
+path+=(/usr/local/go/bin "$HOME/go/bin" "$HOME/.cargo/bin")
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
