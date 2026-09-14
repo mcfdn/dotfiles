@@ -38,14 +38,8 @@ export VISUAL="nvim"
 
 # Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
 [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
-[[ -f /usr/share/doc/fzf/examples/completion.zsh ]] && source /usr/share/doc/fzf/examples/completion.zsh
-
-# -- Keybinds --------------------------------------------------------------------------------------
 
 bindkey -e
-
-# Use fzf to search history
-bindkey '^R' fzf-history-widget
 
 # Ctrl+J for down, Ctrl+K for up
 bindkey '^J' down-line-or-search
