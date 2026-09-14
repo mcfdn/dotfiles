@@ -58,11 +58,9 @@ zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}
 # -- Aliases ---------------------------------------------------------------------------------------
 
 alias ls="ls --color=auto"
-alias la="ls -la"
 alias grep="grep --colour=auto"
 alias history="history 0"
 
-alias g="git"
 alias lg="lazygit"
 alias vim="nvim"
 
