@@ -64,88 +64,35 @@ alias history="history 0"
 alias lg="lazygit"
 alias vim="nvim"
 
-# -- Prompt ----------------------------------------------------------------------------------------
+# display the current git branch, if any
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '%F{green}%b%f '
 
-# Note: `man zshmisc` is helpful here.
-
-function preexec() {
-    # Start a timer before each command is executed.
-    # This is used in prompt_timer().
-    typeset -g __CMD_TIMER=$(date +%s%3N)
-
-    # Store the delta time that the last command took to execute in a global
-    # variable so it persists across prompt renders (even if no command is
-    # executed).
-    typeset -g __CMD_DELTA=0
-}
-
-# This function is called before each command prompt is displayed. It's only
-# being used to build the prompt in this case.
-function precmd() {
-    # The previous exit code needs to be obtained before we do anything else,
-    # otherwise the wrong code may be displayed.
+precmd() {
+    # the previous exit code needs to be obtained before we do anything else,
+    # otherwise the wrong code may be displayed
     local prev_exit_code=$?
 
-    # Set prompt dir. More info in `man zshmisc` under `%~`.
+    # set prompt dir. more info in `man zshmisc` under `%~`
     local prompt_dir="%F{blue}%~%f "
 
-    # Display background jobs if any are running. More info in `man zshmisc`
-    # under `%j`.
+    # display background jobs if any are running. more info in `man zshmisc`
+    # under `%j`
     local prompt_bg_jobs="%(1j.%F{cyan}&%j%f .)"
 
-    # Display the prompt character.
+    # display the prompt character.
     local prompt_char="%F{242}$%f "
 
-    # Display the current git branch if we're in a git repository.
-    local prompt_git_branch
-    if command git rev-parse --is-inside-work-tree &>/dev/null; then
-        # Get the current git branch name, falling back to commit hash if HEAD
-        # is detached.
-        local ref=$(git symbolic-ref --short HEAD 2>/dev/null || git rev-parse --short HEAD 2>/dev/null)
+    vcs_info
 
-        # Append an asterisk (*) if there are uncommitted changes.
-        local dirty=""
-        if [[ -n $ref ]]; then
-            if ! git diff --quiet --ignore-submodules --cached || ! git diff --quiet --ignore-submodules; then
-                dirty="%F{yellow}*%f"
-            fi
-        fi
-
-        # Append a caret (^) if the local branch is ahead of the upstream
-        # branch.
-        # First, check if the upstream branch exists.
-        local ahead=""
-        if git rev-parse --abbrev-ref --symbolic-full-name @{u} &>/dev/null; then
-            # Count the number of commits ahead of the upstream.
-            local commits_ahead=$(git rev-list --left-right --count HEAD...@{u} 2>/dev/null | awk '{print $1}')
-            if (( commits_ahead > 0 )); then
-                ahead="%F{yellow}^${commits_ahead}%f"
-            fi
-        fi
-
-        prompt_git_branch="%F{green}${ref}${dirty}${ahead}%f "
-    fi
-
-    # Display the exit code of the previous command if it was not 0.
+    # display the exit code of the previous command if it was not 0
     local prompt_exit_code
     if (( prev_exit_code != 0 )); then
         prompt_exit_code="%F{167}!${prev_exit_code}%f "
     fi
 
-    # Display the time taken for the last command to execute.
-    if [[ -n $__CMD_TIMER && -n $__CMD_DELTA ]]; then
-        local now=$(date +%s%3N)
-        __CMD_DELTA=$(($now-$__CMD_TIMER))
-        unset __CMD_TIMER
-
-        prompt_timer="%F{cyan}${__CMD_DELTA}ms%f"
-    fi
-
-    # Configure the main prompt (left).
-    export PROMPT="
-${prompt_dir}${prompt_git_branch}${prompt_exit_code}${prompt_bg_jobs}
+    PROMPT="
+${prompt_dir}${vcs_info_msg_0_}${prompt_exit_code}${prompt_bg_jobs}
 ${prompt_char}"
-
-    # Configure the right prompt.
-    export RPROMPT="${prompt_timer}"
 }
