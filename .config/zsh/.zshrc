@@ -10,7 +10,7 @@ setopt hist_ignore_space      # ignore commands that start with space
 setopt hist_verify            # show command with history expansion to user before running it
 setopt share_history          # share command history data
 
-# Match .dotfiles automatically
+# match .dotfiles automatically
 setopt globdots
 
 # initialise zsh completions
@@ -36,26 +36,24 @@ export VISUAL="nvim"
 
 [[ -n $TTY ]] && export GPG_TTY=$TTY
 
-# Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
+# load fzf keybindings (ctrl+r, ctrl+t, alt+c)
 [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 bindkey -e
 
-# Ctrl+J for down, Ctrl+K for up
+# ctrl+j for down, ctrl+k for up
 bindkey '^J' down-line-or-search
 bindkey '^K' up-line-or-search
 
-# Tab completion highlighting
+# tab completion highlighting
 zstyle ':completion:*' menu select
 
-# Press Shift+Tab to reverse the current completion selection
+# press shift+tab to reverse the current completion selection
 bindkey '^[[Z' reverse-menu-complete
 
-# Partial tab completions
-# Stolen from https://github.com/ohmyzsh/ohmyzsh/blob/5ea2c68be88452b33b35ba8004fc9094618bcd87/lib/completion.zsh
+# partial tab completions
+# stolen from https://github.com/ohmyzsh/ohmyzsh/blob/5ea2c68be88452b33b35ba8004fc9094618bcd87/lib/completion.zsh
 zstyle ':completion:*' matcher-list 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' 'r:|=*' 'l:|=* r:|=*'
-
-# -- Aliases ---------------------------------------------------------------------------------------
 
 alias ls="ls --color=auto"
 alias grep="grep --colour=auto"
