@@ -22,15 +22,19 @@ typeset -U path PATH
 path+=(/usr/local/go/bin "$HOME/go/bin" "$HOME/.cargo/bin")
 
 export NVM_DIR="$HOME/.config/nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-export TERM="xterm-256color"
-export TERMINAL="alacritty"
+# load nvm only when it is explicitly used
+nvm() {
+    unfunction nvm
+    [[ -s "$NVM_DIR/nvm.sh" ]] || return 1
+    source "$NVM_DIR/nvm.sh"
+    nvm "$@"
+}
+
 export EDITOR="nvim"
 export VISUAL="nvim"
-export GPG_TTY=$(tty)
 
-# -- Plugins ---------------------------------------------------------------------------------------
+[[ -n $TTY ]] && export GPG_TTY=$TTY
 
 # Load fzf keybindings (Ctrl+R, Ctrl+T, Alt+C)
 [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]] && source /usr/share/doc/fzf/examples/key-bindings.zsh
