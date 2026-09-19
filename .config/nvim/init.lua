@@ -26,7 +26,7 @@ vim.o.list = true
 vim.opt.completeopt = { "menuone", "noselect", "popup" }
 vim.opt.listchars = { tab = "  ", trail = "." }
 vim.o.grepprg = "rg --vimgrep --smart-case --hidden --glob '!.git'"
-vim.opt.path:append({ "**", "**/.*/**" })
+vim.opt.path:append({ "**", "**/.[^.]*/**", "**/..?*/**" })
 vim.opt.wildignore:append({ "*/.git/*" })
 
 vim.pack.add({
