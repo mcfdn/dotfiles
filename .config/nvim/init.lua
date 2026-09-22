@@ -42,19 +42,17 @@ vim.lsp.enable({
 
 local augroup = vim.api.nvim_create_augroup("mcfdn.init", { clear = true })
 
-vim.api.nvim_create_autocmd("FileType", {
-  group = augroup,
-  pattern = { "markdown", "go" },
-  callback = function()
-    vim.opt_local.textwidth = 80
-  end,
-})
+local textwidth_by_ft = {
+  markdown = 80,
+  go = 80,
+  rust = 100,
+}
 
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup,
-  pattern = { "rust" },
-  callback = function()
-    vim.opt_local.textwidth = 100
+  pattern = vim.tbl_keys(textwidth_by_ft),
+  callback = function(args)
+    vim.opt_local.textwidth = textwidth_by_ft[args.match]
   end,
 })
 
